@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Manager Register</title>
+     <style>
+    	form{
+    	
+    		width:480px;
+    		height:540px;
+    		margin-top:60px;
+    		box-shadow: 0 4px 8px 0 rgba(0,0,0,0.7);
+    	}
+    	input{
+    		height:40px;
+    		width:370px;
+    		margin-left:10px;
+    		margin-top:20px;
+    	}
+    	select{
+    		height:40px;
+    		width:370px;
+    		margin-left:10px;
+    		margin-top:20px;
+    	}
+    	button{
+    	
+    		height:40px;
+    		width:200px;
+    		margin-left:30px;
+    		margin-top:50px;
+    		background-color:#2596be;
+    		color:white;
+    	}
+    	h3{
+    		margin-left:60px;
+    	}
+    	
+    </style>
+    <!-- CSS only -->
+</head>
+<body>
+<center>
+  <h2>Manager Register Page</h2>
+    <center>
+    <form th:action="@{/manager/save}" method="post" th:object="${manager}" >
+  		<h3> Create your account</h3>
+        <div class="form-group">
+            <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter Manager Name" th:field ="*{name}">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" id="password" placeholder="Password" th:field ="*{password}">
+        </div>
+         <div class="form-group">
+            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" th:field ="*{email}">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" id="mobileNumber"
+					placeholder="mobile" th:field="*{phone}">
+		</div>
+		<div class="form-group">
+       
+        <select id="department" th:field="*{department}">
+            <option th:value="HumanResources" th:text="HumanResources">HumanResources</option>
+            <option th:value="Development" th:text="Development">Development</option>
+            <option th:value="Sales" th:text="Sales">Sales</option>
+        </select>
+    </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</center>
+</body>
+</html>

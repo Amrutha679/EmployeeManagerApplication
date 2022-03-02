@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>Apply Leave</title>
+<script type="text/javascript">
+function getDays(){
+	  
+    var date1 =  new Date(document.getElementById("fromDate").value);
+	var date2 = new Date(document.getElementById("toDate").value);
+	var Difference_In_Time = date2.getTime() - date1.getTime();
+	var noOfDays = Difference_In_Time / (1000 * 3600 * 24);
+  	if(noOfDays > 3 ){
+  		alert("should not take more than 3 days")
+  	}
+             
+}
+</script>
+<style>
+ul {
+	background-color: black;
+	padding: 35px;
+}
+
+li {
+	display: inline;
+	padding: 30px;
+}
+
+li a {
+	text-decoration: none;
+	color: white;
+}
+
+li a:hover {
+	border-bottom: 3px solid white;
+}
+
+table, th, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+	padding: 10px;
+}
+
+form {
+	width: 500px;
+	height: 500px;
+	margin-left: 70px;
+	margin-top: 60px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7);
+}
+
+input {
+	height: 40px;
+	width: 350px;
+	margin-left: 20px;
+	margin-top: 20px;
+}
+
+select {
+	height: 40px;
+	width: 350px;
+	margin-left: 20px;
+	margin-top: 20px;
+}
+
+button {
+	height: 40px;
+	width: 200px;
+	margin-left: 40px;
+	margin-top: 50px;
+	background-color: #2596be;
+	color: white;
+}
+
+h3 {
+	margin-left: 20px;
+}
+</style>
+
+</head>
+<body>
+	<center>
+		<ul>
+			<li><a
+				th:href="@{/employee/myprofile/{eid}(eid=${employee.eid})}">Profile</a></li>
+			<li><a th:href="@{/employee/{id}/leave(eid=${employee.eid})}">Apply
+					Leave</a></li>
+			<li><a
+				th:href="@{/employee/{id}/myapplications(id=${employee.eid})}">My
+					Applications</a></li>
+			<li><a th:href="@{/}">Logout</a></li>
+		</ul>
+		<br>
+
+		<form th:action="@{/employee/{id}/leave/save(id=${employee.eid})}"
+			method="post" th:object="${leave}">
+			<h3>Apply Leave</h3>
+			<div class="form-group">
+				<input type="text" class="form-control" id="employeeName"
+					placeholder="Enter Name" th:field="*{ename}">
+			</div>
+			<div class="form-group">
+				<input type="text" class="form-control" id="email"
+					placeholder="Enter Email" th:field="*{employeeMail}">
+			</div>
+			<div class="form-group">
+
+				<select id="department" th:field="*{deptName}">
+					<option th:value="HumanResources" th:text="HumanResources"></option>
+					<option th:value="Development" th:text="Development"></option>
+					<option th:value="Sales" th:text="Sales"></option>
+				</select>
+			</div>
+			<div class="form-group">
+				<input type="date" class="form-control" id="fromDate"
+					th:field="*{fromDate}">
+			</div>
+			<div class="form-group">
+				<input type="date" class="form-control" id="toDate"
+					th:field="*{toDate}">
+			</div>
+			<button type="submit" onclick="getDays()" class="btn btn-primary">Submit</button>
+		</form>
+	</center>
+</body>
+</html>

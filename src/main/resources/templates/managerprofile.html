@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+   <style>
+    ul{
+    	background-color:black;
+    	padding:35px;
+    }
+    li{
+    	display:inline;
+    	padding:30px;
+    }
+    li a{
+    	text-decoration:none;
+    	color:white;
+    }
+    li a:hover{
+    	border-bottom: 3px solid white;
+    }
+   table, th, td {
+  		border: 1px solid black;
+ 		border-collapse: collapse;
+ 		padding:10px;
+	}
+    </style>
+</head>
+<body>
+<div class="head">
+<center>
+<ul>
+  <li><a th:href="@{/manager/myprofile/{id}(id=${manager.id})}">Profile</a></li>
+  <li><a th:href="@{/manager/myapplicants/{id}(id=${manager.id})}">My applicants</a></li>
+  <li><a th:href="@{/}">Logout</a></li>
+</ul>
+</center>
+</div>
+<center>
+<div class="tbl">
+<table width="1200px">
+  <tr>
+  
+    <th>Name</th>
+    <th>Email</th>
+    <th>Department</th>
+    <th>Update</th>
+  </tr>
+  <tr>
+    <td th:text="${manager.name}"></td>
+    <td th:text="${manager.email}"></td>
+    <td th:text="${manager.department}"></td>
+    <td><a href="">Update</a></td>
+  </tr>
+</table>
+</div>
+</center>
+</body>
+</html>

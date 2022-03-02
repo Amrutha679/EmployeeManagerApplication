@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>My Appointments</title>
+     <style>
+    ul{
+    	background-color:black;
+    	padding:35px;
+    }
+    li{
+    	display:inline;
+    	padding:30px;
+    }
+    li a{
+    	text-decoration:none;
+    	color:white;
+    }
+    li a:hover{
+    	border-bottom: 3px solid white;
+    }
+   table, th, td {
+  		border: 1px solid black;
+ 		border-collapse: collapse;
+ 		padding:10px;
+	}
+ </style>
+</head>
+<body>
+<center>
+<ul>
+
+ <li><a th:href="@{/employee/myprofile/{id}(id=${employee.eid})}">Profile</a></li>
+  <li><a th:href="@{/employee/{id}/leave(id=${employee.eid})}">Apply Leave</a></li>
+  <li><a th:href="@{/employee/{id}/myapplications(id=${employee.eid})}">My Applications</a></li>
+  <li><a th:href="@{/}">Logout</a></li>
+</ul>
+  <table width="1000px">
+    <thead>
+    <tr>
+    <td>Name</td>
+      <td>FromDate</td>
+      <td>ToDate</td>
+      <td>Department</td>
+      <td>Status</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="leave: ${leaves}">
+      <td th:text="${leave.ename}"></td>
+      <td th:text="${leave.fromDate}"></td>
+      <td th:text="${leave.toDate}"></td>
+      <td th:text="${leave.deptName}"></td>
+      <td th:text="${leave.status}"></td>
+    </tr>
+    </tbody>
+  </table>
+</center>
+</body>
+</html>

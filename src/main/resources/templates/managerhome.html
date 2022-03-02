@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Manager home</title>
+    <style>
+    ul{
+    	background-color:black;
+    	padding:35px;
+    }
+    li{
+    	display:inline;
+    	padding:30px;
+    }
+    li a{
+    	text-decoration:none;
+    	color:white;
+    }
+    li a:hover{
+    	border-bottom: 3px solid white;
+    }
+    </style>
+</head>
+<body>
+<center>
+	<ul>
+    <li><a th:href="@{/manager/myprofile/{id}(id=${manager.id})}">Profile</a></li>
+    <li><a th:href="@{/manager/myapplicants/{id}(id=${manager.id})}">My applicants</a></li>
+    <li><a th:href="@{/}">Logout</a></li>
+    </ul>
+</center>
+</body>
+</html>

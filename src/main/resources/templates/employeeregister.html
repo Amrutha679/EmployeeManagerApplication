@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Register</title>
+    <style>
+    	form{
+    	
+    		width:480px;
+    		height:640px;
+    		margin-top:60px;
+    		box-shadow: 0 4px 8px 0 rgba(0,0,0,0.7);
+    	}
+    	input{
+    		height:40px;
+    		width:350px;
+    		margin-left:20px;
+    		margin-top:20px;
+    	}
+    	button{
+    	
+    		height:40px;
+    		width:200px;
+    		margin-left:25px;
+    		margin-top:50px;
+    		background-color:#2596be;
+    		color:white;
+    	}
+    	h3{
+    		margin-left:40px;
+    	}
+    	
+    </style>
+    <!-- CSS only -->
+</head>
+<body>
+<center>
+  <h2>Employee Register Page</h2>
+    <center>
+    <form th:action="@{/employee/save}" method="post" th:object="${employee}" >
+    	<center><h3>Create your account</h3></center>
+        <div class="form-group">
+            <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter EmployeeName" th:field ="*{name}">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" id="password" placeholder="Password" th:field ="*{password}">
+        </div>
+         <div class="form-group">
+            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" th:field ="*{email}">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" id="mobileNumber"
+					placeholder="mobile" th:field="*{phone}">
+			</div>
+        <div class="form-group">
+            <input type="text" class="form-control" id="desig" aria-describedby="emailHelp" placeholder="Enter Designation" th:field ="*{designation}">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</center>
+</body>
+</html>
